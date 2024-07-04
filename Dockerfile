@@ -1,7 +1,7 @@
 # Dockerfile
 
 # Usa la imagen oficial de Node como base
-FROM node:16-alpine
+FROM node:18-alpine
 
 # Establece el directorio de trabajo en la carpeta de la aplicación
 WORKDIR /app
@@ -10,10 +10,12 @@ WORKDIR /app
 COPY package*.json ./
 
 # Instala las dependencias del proyecto
-RUN npm install --only=production
+RUN npm install
 
 # Copia el resto de la aplicación
 COPY . .
+
+RUN npm run build
 
 # Expone el puerto 3000 para que pueda ser accesible desde fuera del contenedor
 EXPOSE 3000
