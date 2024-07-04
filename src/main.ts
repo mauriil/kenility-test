@@ -8,7 +8,6 @@ import { MyLogger } from './utils/MyLogger';
 import { envs } from './config/envs';
 
 async function bootstrap() {
-  console.log("🚀 ~ envs:", envs)
   const app = await NestFactory.create(AppModule);
 
   app.enableVersioning({
